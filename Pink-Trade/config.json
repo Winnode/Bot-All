@@ -1,0 +1,6 @@
+{
+    "use_proxy": false,
+    "send_telegram_message": true,
+    "telegram_bot_token": "70521201xxxxxxxxxxxx",
+    "telegram_chat_id": "52xxxx"
+}
