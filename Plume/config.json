@@ -7,5 +7,5 @@
     "gas_price": 1000000000,
     "faucet_url": "https://faucet.plumenetwork.xyz/api/faucet",
     "rpc_endpoint": "https://testnet-rpc.plumenetwork.xyz/http",
-    "use_proxy": true
+    "use_proxy": false
 }
