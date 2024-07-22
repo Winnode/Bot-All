@@ -10,16 +10,17 @@ sudo apt update
 sudo apt install -y git $PYTHON_VERSION $PYTHON_VERSION-venv
 
 if [ -d "$REPO_DIR" ]; then
-    echo "Repository already cloned. Pulling the latest changes..."
-    cd $REPO_DIR
+    echo "Repository directory already exists."
+    cd $REPO_DIR || exit
+    echo "Pulling the latest changes..."
     git pull
 else
     echo "Cloning repository..."
     git clone $REPO_URL
-    cd $REPO_DIR
+    cd $REPO_DIR || exit
 fi
 
-cd $PROJECT_DIR
+cd $PROJECT_DIR || exit
 
 if [ ! -d "$VENV_DIR" ]; then
     echo "Creating virtual environment..."
