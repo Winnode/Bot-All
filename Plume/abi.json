@@ -1,0 +1,95 @@
+{
+    "implementation_abi": [
+        {
+            "inputs": [
+                {"internalType": "string", "name": "token", "type": "string"},
+                {"internalType": "bytes32", "name": "salt", "type": "bytes32"},
+                {"internalType": "bytes", "name": "signature", "type": "bytes"}
+            ],
+            "name": "getToken",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "proxy_abi": [
+        {
+            "inputs": [
+                {"internalType": "address", "name": "implementation", "type": "address"},
+                {"internalType": "bytes", "name": "_data", "type": "bytes"}
+            ],
+            "stateMutability": "payable",
+            "type": "constructor"
+        },
+        {
+            "stateMutability": "payable",
+            "type": "fallback"
+        }
+    ],
+    "swap_abi": [
+        {
+            "inputs": [
+                {"internalType": "address", "name": "base", "type": "address"},
+                {"internalType": "address", "name": "quote", "type": "address"},
+                {"internalType": "uint256", "name": "poolIdx", "type": "uint256"},
+                {"internalType": "bool", "name": "isBuy", "type": "bool"},
+                {"internalType": "bool", "name": "inBaseQty", "type": "bool"},
+                {"internalType": "uint128", "name": "qty", "type": "uint128"},
+                {"internalType": "uint16", "name": "tip", "type": "uint16"},
+                {"internalType": "uint128", "name": "limitPrice", "type": "uint128"},
+                {"internalType": "uint128", "name": "minOut", "type": "uint128"},
+                {"internalType": "uint8", "name": "reserveFlags", "type": "uint8"}
+            ],
+            "name": "swap",
+            "outputs": [
+                {"internalType": "int128", "name": "baseFlow", "type": "int128"},
+                {"internalType": "int128", "name": "quoteFlow", "type": "int128"}
+            ],
+            "stateMutability": "payable",
+            "type": "function"
+        }
+    ],
+    "erc20_abi": [
+        {
+            "constant": true,
+            "inputs": [{"name": "_owner", "type": "address"}],
+            "name": "balanceOf",
+            "outputs": [{"name": "balance", "type": "uint256"}],
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {"name": "_spender", "type": "address"},
+                {"name": "_value", "type": "uint256"}
+            ],
+            "name": "approve",
+            "outputs": [{"name": "success", "type": "bool"}],
+            "type": "function"
+        }
+    ],
+    "implementation_stake_abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "stake",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "implementation_check_in_abi": [
+        {
+            "inputs": [],
+            "name": "checkIn",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+requests[socks]
+web3==6.0.0
+eth-account==0.5.7
+pyfiglet==0.8.post1
+colorama==0.4.4
