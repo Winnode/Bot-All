@@ -10,9 +10,8 @@ sudo apt update
 sudo apt install -y git $PYTHON_VERSION $PYTHON_VERSION-venv
 
 if [ -d "$REPO_DIR" ]; then
-    echo "Repository directory already exists."
+    echo "Repository directory already exists. Pulling the latest changes..."
     cd $REPO_DIR || exit
-    echo "Pulling the latest changes..."
     git pull
 else
     echo "Cloning repository..."
