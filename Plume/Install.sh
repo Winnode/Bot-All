@@ -1,37 +1,55 @@
 #!/bin/bash
 
-REPO_URL="https://github.com/Winnode/Bot-All.git"
-REPO_DIR="Bot-All"
-BACKUP_DIR="Bot-All-backup"
-PROJECT_DIR="Bot-All/Plume"
-VENV_DIR="venv"
+REPO_URL="https://github.com/Winnode/Bot-All/archive/refs/heads/main.zip"
+ZIP_FILE="Bot-All.zip"
+EXTRACTED_DIR="Bot-All-main"
+PLUME_DIR="Plume"
+DEST_DIR="/root/Bot-All"
+PLUME_PATH="$DEST_DIR/$PLUME_DIR"
 PYTHON_VERSION="python3.9"
 
+echo "Updating package list..."
 sudo apt update
-sudo apt install -y git $PYTHON_VERSION $PYTHON_VERSION-venv
 
-if [ -d "$REPO_DIR" ]; then
-    echo "Repository directory already exists. Creating a backup..."
-    mv $REPO_DIR $BACKUP_DIR
+echo "Installing required packages..."
+sudo apt install -y git $PYTHON_VERSION $PYTHON_VERSION-venv unzip wget
+
+echo "Downloading the latest version of Bot-All..."
+wget $REPO_URL -O $ZIP_FILE
+
+echo "Extracting $ZIP_FILE..."
+unzip $ZIP_FILE
+
+if [ -d "$EXTRACTED_DIR/$PLUME_DIR" ]; then
+    echo "Copying $PLUME_DIR folder to $DEST_DIR..."
+    mkdir -p $DEST_DIR  
+    cp -r $EXTRACTED_DIR/$PLUME_DIR $DEST_DIR/
+else
+    echo "Directory $PLUME_DIR not found in the extracted files."
+    exit 1
 fi
 
-echo "Cloning repository..."
-git clone $REPO_URL
-cd $REPO_DIR || exit
-
-cd $PROJECT_DIR || exit
-
-if [ ! -d "$VENV_DIR" ]; then
+cd $PLUME_PATH || { echo "Failed to enter $PLUME_PATH"; exit 1; }
+a
+if [ ! -d "venv" ]; then
     echo "Creating virtual environment..."
-    $PYTHON_VERSION -m venv $VENV_DIR
+    $PYTHON_VERSION -m venv venv
 fi
 
 echo "Activating virtual environment..."
-source $VENV_DIR/bin/activate
+source venv/bin/activate
 
 echo "Installing dependencies..."
-pip install --upgrade pip
-pip install -r requirements.txt
+if [ -f "requirements.txt" ]; then
+    pip install --upgrade pip
+    pip install -r requirements.txt
+else
+    echo "requirements.txt not found"
+    exit 1
+fi
 
-echo "Running the bot..."
-python3 run.py
+echo "Cleaning up..."
+cd
+rm -f $ZIP_FILE
+rm -rf $EXTRACTED_DIR
+echo "Setup complete. The environment is ready in $PLUME_PATH."
