@@ -3,7 +3,7 @@
     "module_delay_max": 10,
     "wallet_delay_min": 5,
     "wallet_delay_max": 10,
-    "gas_limit": 2000000,
+    "gas_limit": 500000,
     "faucet_url": "https://faucet.plumenetwork.xyz/api/faucet",
     "rpc_endpoint": "https://testnet-rpc.plumenetwork.xyz/http",
     "use_proxy": false
