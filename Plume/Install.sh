@@ -2,6 +2,7 @@
 
 REPO_URL="https://github.com/Winnode/Bot-All.git"
 REPO_DIR="Bot-All"
+BACKUP_DIR="Bot-All-backup"
 PROJECT_DIR="Bot-All/Plume"
 VENV_DIR="venv"
 PYTHON_VERSION="python3.9"
@@ -10,14 +11,13 @@ sudo apt update
 sudo apt install -y git $PYTHON_VERSION $PYTHON_VERSION-venv
 
 if [ -d "$REPO_DIR" ]; then
-    echo "Repository directory already exists. Pulling the latest changes..."
-    cd $REPO_DIR || exit
-    git pull
-else
-    echo "Cloning repository..."
-    git clone $REPO_URL
-    cd $REPO_DIR || exit
+    echo "Repository directory already exists. Creating a backup..."
+    mv $REPO_DIR $BACKUP_DIR
 fi
+
+echo "Cloning repository..."
+git clone $REPO_URL
+cd $REPO_DIR || exit
 
 cd $PROJECT_DIR || exit
 
